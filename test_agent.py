@@ -9,20 +9,22 @@ def test_derive_key():
 
 def test_encrypt_decrypt():
     test_file = Path("test_data/test_unit.txt")
-
-    # créer fichier test
     test_file.write_text("secret data")
 
     password = "test123"
 
-    # chiffrement
     encrypt_file(test_file, password)
 
     encrypted_file = Path("test_data/test_unit.txt.aphb")
     assert encrypted_file.exists()
 
-    # déchiffrement
     decrypt_file(encrypted_file, password)
 
     assert test_file.exists()
     assert test_file.read_text() == "secret data"
+
+
+if __name__ == "__main__":
+    test_derive_key()
+    test_encrypt_decrypt()
+    print("Tests passed successfully.")

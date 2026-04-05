@@ -1,2 +1,4 @@
-2026-04-05 10:55:51,478 | INFO | ENCRYPTED: test_data/test.txt -> test_data/test.txt.aphb
-2026-04-05 10:57:08,466 | INFO | DECRYPTED: test_data/test.txt.aphb -> test_data/test.txt
+2026-04-05 13:06:25,214 | INFO | ENCRYPTED: test_data/test.txt -> test_data/test.txt.aphb
+2026-04-05 13:06:30,689 | INFO | DECRYPTED: test_data/test.txt.aphb -> test_data/test.txt
+2026-04-05 13:13:05,206 | INFO | ENCRYPTED: test_data/test_unit.txt -> test_data/test_unit.txt.aphb
+2026-04-05 13:13:05,276 | INFO | DECRYPTED: test_data/test_unit.txt.aphb -> test_data/test_unit.txt
