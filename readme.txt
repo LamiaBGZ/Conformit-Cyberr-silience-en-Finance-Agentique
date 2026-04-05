@@ -8,7 +8,7 @@ Il s’inscrit dans un scénario où l’établissement hospitalier AP-HB a subi
 
 L’objectif est de renforcer la cyber-résilience du système d’information en mettant en place un agent capable de protéger automatiquement les données sensibles.
 
-L’agent garantit que « aucune donnée ne sort sous forme lisible », même en cas d’exfiltration après une cyberattaque.
+L’agent garantit que **« aucune donnée ne sort sous forme lisible »**, même en cas d’exfiltration après une cyberattaque.
 
 ---
 
@@ -24,8 +24,6 @@ L’objectif principal est de :
 
 ## Architecture de la solution
 
-L’agent repose sur des mécanismes cryptographiques robustes et conformes aux standards actuels.
-
 | Composant | Description |
 |-----------|-------------|
 | Algorithme de chiffrement | AES-256-GCM |
@@ -38,17 +36,15 @@ L’agent repose sur des mécanismes cryptographiques robustes et conformes aux 
 | Bibliothèque | cryptography |
 | Journalisation | Logs horodatés |
 
-Le mode GCM permet d’assurer la confidentialité et l’intégrité des données.
-
 ---
 
 ## Fonctionnalités principales
 
-- chiffrement automatique des fichiers d’un répertoire ;
-- déchiffrement sécurisé des fichiers ;
-- traitement récursif des sous-répertoires ;
-- journalisation des opérations ;
-- suppression des fichiers en clair après chiffrement.
+- chiffrement automatique des fichiers d’un répertoire
+- déchiffrement sécurisé des fichiers
+- traitement récursif des sous-répertoires
+- journalisation des opérations
+- suppression des fichiers en clair après chiffrement
 
 ---
 
@@ -67,12 +63,6 @@ Le mode GCM permet d’assurer la confidentialité et l’intégrité des donné
 
 ## Installation
 
-Prérequis :
-- Python 3.8 ou supérieur
-- pip
-
-Installation des dépendances :
-
 pip install -r requirements.txt
 
 ---
@@ -87,101 +77,24 @@ Déchiffrement :
 
 python3 apbh_agent.py /chemin/vers/dossier --mode decrypt
 
-Une passphrase est demandée de manière sécurisée lors de l’exécution.
+---
+
+## Docker
+
+docker build -t apbh-agent  
+docker run --rm apbh-agent  
 
 ---
 
-## Exécution avec Docker
-
-Construction :
-
-docker build -t apbh-agent .
-
-Exécution :
-
-docker run --rm apbh-agent
-
----
-
-## Automatisation
-
-Exemple avec cron sous Linux :
+## Automatisation (cron)
 
 0 2 * * * /usr/bin/python3 /opt/apbh/apbh_agent.py /data/sensibles --mode encrypt
 
 ---
 
-## Journalisation
-
-Les opérations sont enregistrées dans :
+## Logs
 
 logs/apbh_encryption_agent.log
-
-Chaque entrée contient :
-- horodatage ;
-- niveau ;
-- description de l’action.
-
----
-
-## Sécurité
-
-Le système garantit :
-- chiffrement AES-256 robuste ;
-- dérivation sécurisée des clés ;
-- génération aléatoire des paramètres ;
-- détection des altérations ;
-- suppression des données en clair.
-
-Recommandations :
-- utiliser une passphrase forte ;
-- ne jamais stocker la clé en clair ;
-- utiliser un gestionnaire de secrets.
-
-Le système contribue à la conformité avec le RGPD.
-
----
-
-## Déploiement
-
-Possible sur :
-- Linux ;
-- Windows ;
-- Docker.
-
----
-
-## Validation et tests
-
-Préparation :
-
-mkdir test_data  
-echo "donnée sensible" > test_data/test.txt  
-
-Test chiffrement :
-
-python3 apbh_agent.py test_data --mode encrypt  
-
-Résultat attendu :
-- fichier original supprimé ;
-- fichier chiffré créé ;
-- log généré.
-
-Test déchiffrement :
-
-python3 apbh_agent.py test_data --mode decrypt  
-
-Résultat attendu :
-- fichier restauré ;
-- contenu intact.
-
-Test d’intégrité :
-
-echo "corruption" >> test_data/test.txt.enc  
-
-Résultat attendu :
-- échec du déchiffrement ;
-- détection d’altération.
 
 ---
 
@@ -193,14 +106,13 @@ https://github.com/LamiaBGZ/Conformit-Cyberr-silience-en-Finance-Agentique
 
 ## Licence
 
-Licence MIT.
+MIT
 
 ---
 
-## Perspectives d’amélioration
+## Perspectives
 
-- intégration d’IA pour détecter les données sensibles ;
-- gestion avancée des clés ;
-- interface utilisateur ;
-- intégration avec SIEM/SOC ;
-- amélioration des tests.
+- intégration IA
+- gestion avancée des clés
+- interface utilisateur
+- intégration SIEM / SOC
